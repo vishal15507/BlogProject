@@ -1,3 +1,4 @@
+#before using this project make the changes at the part where email and password of sender and reciever is required in the /details route
 from flask import Flask, render_template, url_for, request
 from all_posts import all_posts
 app = Flask(__name__)
@@ -27,8 +28,8 @@ def send_email():
         message = request.form["message"]
 
         import smtplib
-        MY_EMAIL = "vishaldemothool@gmail.com"
-        MY_PASSWORD = "L2H2qFpjmJn!LcP"
+        MY_EMAIL = #enter the email from which you want to send an email 
+        MY_PASSWORD = #enter your email password here
         details=f'''
                     Name:{name}
                     email:{email}
@@ -36,7 +37,7 @@ def send_email():
                     message:{message}'''
         with smtplib.SMTP_SSL("smtp.gmail.com") as connection:
             connection.login(user=MY_EMAIL, password=MY_PASSWORD)
-            connection.sendmail(from_addr=MY_EMAIL, to_addrs="vishalthool15507@gmail.com"
+            connection.sendmail(from_addr=MY_EMAIL, to_addrs="email of the reciever"
                                 , msg=f"Subject: Details Of The Visitor\n\n{details}")
 
         return f'<a href="/">Message sent successful</a>'
